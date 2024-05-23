@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace AuthLogic.Configs;
 
 public class PostgresConfig
@@ -15,7 +10,7 @@ public class PostgresConfig
 
     public string DATABASE_NAME { get; set; } = string.Empty;
 
-    public string DATABASE => $"Host={DATABASE_HOST};Database={DATABASE_NAME};Username={DATABASE_USER};Password={DATABASE_PASS};Timezone=0";
+    public string DATABASE => $"Host=localhost:5432;Database=Hakathon;Username=postgres;Password=0591;Timezone=0";
 
 
     public PostgresConfig()

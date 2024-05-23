@@ -10,32 +10,54 @@ using System.Security.Claims;
 
 namespace AuthService.Controllers;
 
+[Route("api/[controller]/[action]")]
 [ApiController]
-[Route("api/auth/[controller]")]
 public class AuthController
 (
     IMediator mediator,
-    IMapper mapper,
     HttpContextAccessor httpContextAccessor
 ) : Controller
 {
     [HttpPost]
-    public async Task<DTO.SignUp.Response> Registration([FromBody]DTO.SignUp.Request request)
+    [Authorize]
+    public async Task<ActionResult> Registration([FromBody]DTO.SignUp.Request request)
     {
-        var result = await mediator.Send(mapper.Map<AuthLogic.Features.Auth.SignUp.Request>(request));
-        return mapper.Map<DTO.SignUp.Response>(result);
+        var query = new AuthLogic.Features.Auth.SignUp.Request
+        {
+            Login = request.Login,
+            Password = request.Password
+        };
+        var result = await mediator.Send(query);
+
+        var resp = new DTO.SignUp.Response
+        {
+            AccessToken = result.AccessToken
+        };
+
+        return Ok(resp);
     }
 
     [HttpPost]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public async Task<DTO.SignIn.Response> Login([FromBody]DTO.SignIn.Request request)
+    public async Task<ActionResult> Login([FromBody]DTO.SignIn.Request request)
     {
-        var result = await mediator.Send(mapper.Map<AuthLogic.Features.Auth.SignIn.Request>(request));
-        return mapper.Map<DTO.SignIn.Response>(result);
-    }
+        //var result = await mediator.Send(mapper.Map<AuthLogic.Features.Auth.SignIn.Request>(request));
 
+        var query = new AuthLogic.Features.Auth.SignIn.Request
+        {
+            Login = request.Login,
+            Password = request.Password
+        };
+        var result = await mediator.Send(query);
+
+        var resp =  new DTO.SignIn.Response
+        {
+            AcessToken = result.AccessToken
+        };
+
+        return Ok(resp);
+    }
     [HttpPost]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     public async Task<ActionResult> Change([FromBody]DTO.SignIn.Request request)
     {
         var user = httpContextAccessor.HttpContext?.User;

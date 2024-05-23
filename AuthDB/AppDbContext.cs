@@ -11,7 +11,7 @@ public class AppDbContext : DbContext
         this.config = config;
     }
 
-    public DbSet<Entities.User> Users { get; set; } = null!;
+    public DbSet<Entities.User> User { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

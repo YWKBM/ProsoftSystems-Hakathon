@@ -15,7 +15,7 @@ public class m20240523_164200_CreateUserTable : Migration
             {
                 Id = t.Column<int>(type: "serial"),
                 Login = t.Column<string>(),
-                Password = t.Column<decimal>(),
+                Password = t.Column<string>(),
             }
         ).PrimaryKey("PK-User", c => c.Id);
     }

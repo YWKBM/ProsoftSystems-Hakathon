@@ -1,7 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using System.Text;
 using AuthDB;
+using AuthLogic.Configs;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AuthLogic.Services;
@@ -9,19 +11,14 @@ namespace AuthLogic.Services;
 public class TokenService
 {
     public const string ISSUER_USER = "user";
-    public const string ISSUER_USER_REFRESH = "user-refresh";
-
     private readonly SigningCredentials credentials;
-    private readonly AppDbContext db;
 
-    public TokenService(AppDbContext db)
+    public TokenService()
     {
-        this.db = db;
-
-        var ecda = ECDsa.Create();
-        ecda.ImportECPrivateKey(Convert.FromBase64String(Configs.Config.JWT.PrivateKey), out _);
-        var securityKey = new ECDsaSecurityKey(ecda);
-        credentials = new SigningCredentials(securityKey, SecurityAlgorithms.EcdsaSha256);
+        byte[] bytes = Encoding.ASCII.GetBytes(Config.JWT.PrivateKey);
+        credentials = new SigningCredentials(
+            new SymmetricSecurityKey(bytes),
+            SecurityAlgorithms.HmacSha256Signature);
     }
 
     public string CreateUserAccessToken(AuthDB.Entities.User user, Guid jti)
