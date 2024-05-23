@@ -1,6 +1,6 @@
 using Mediator;
 
-namespace AuthLogic.Features.AdminAuth;
+namespace AuthLogic.Features.Auth.SignUp;
 
 public record Request : IRequest<Result>
 {
