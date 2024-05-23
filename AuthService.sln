@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\AuthService.csproj", "{76236BBF-8ADE-4243-B532-BCE2394B162F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Features", "Features\Features.csproj", "{FDF0452F-9F58-4987-A104-14345AB472B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthLogic", "AuthLogic\AuthLogic.csproj", "{FAD538DD-84F3-4079-81A6-44C4A10F19D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthDB", "AuthDB\AuthDB.csproj", "{F3F148F2-39F8-49D0-A1A9-3FF9FC8FF9DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76236BBF-8ADE-4243-B532-BCE2394B162F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76236BBF-8ADE-4243-B532-BCE2394B162F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76236BBF-8ADE-4243-B532-BCE2394B162F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76236BBF-8ADE-4243-B532-BCE2394B162F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF0452F-9F58-4987-A104-14345AB472B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF0452F-9F58-4987-A104-14345AB472B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF0452F-9F58-4987-A104-14345AB472B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF0452F-9F58-4987-A104-14345AB472B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD538DD-84F3-4079-81A6-44C4A10F19D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD538DD-84F3-4079-81A6-44C4A10F19D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD538DD-84F3-4079-81A6-44C4A10F19D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD538DD-84F3-4079-81A6-44C4A10F19D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F148F2-39F8-49D0-A1A9-3FF9FC8FF9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F148F2-39F8-49D0-A1A9-3FF9FC8FF9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F148F2-39F8-49D0-A1A9-3FF9FC8FF9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F148F2-39F8-49D0-A1A9-3FF9FC8FF9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
