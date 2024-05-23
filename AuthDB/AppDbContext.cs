@@ -13,8 +13,6 @@ public class AppDbContext : DbContext
 
     public DbSet<Entities.User> Users { get; set; } = null!;
 
-    public DbSet<Entities.Admin> Admin { get; set; } = null!;
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseNpgsql(config.ConnectionString, x =>
