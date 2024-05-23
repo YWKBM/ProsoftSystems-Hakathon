@@ -36,7 +36,7 @@ public class AuthController
 
     [HttpPost]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public async Task<DTO.SignIn.Response> Change([FromBody]DTO.SignIn.Request request)
+    public async Task<ActionResult> Change([FromBody]DTO.SignIn.Request request)
     {
         var user = httpContextAccessor.HttpContext?.User;
         var value = user?.FindFirstValue("id");
@@ -47,7 +47,9 @@ public class AuthController
             Password = request.Password,
         };
 
-        var result = await mediator.Send(query);
-        return mapper.Map<DTO.SignIn.Response>(result);
+
+        await mediator.Send(query);
+
+        return Ok();
     }
 }
