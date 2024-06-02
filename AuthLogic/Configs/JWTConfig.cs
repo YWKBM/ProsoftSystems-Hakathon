@@ -4,7 +4,7 @@ namespace AuthLogic.Configs;
 
 public class JWTConfig : BaseConfig
 {
-    public string PrivateKey { get; set; } = "secretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKey";
+    public string PrivateKey { get; set; } = string.Empty;
     
     public JWTConfig() 
     {
