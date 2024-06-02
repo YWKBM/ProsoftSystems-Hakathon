@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AuthDB.Entities.Enums;
 
 namespace AuthLogic;
@@ -15,7 +11,7 @@ public static class RoleHelper
         { RoleEnum.Admin, new[]
         {PremissionsEnum.UsersView, PremissionsEnum.Default } },
         { RoleEnum.User, new[]
-        {PremissionsEnum.UsersView, PremissionsEnum.Default } },
+        {PremissionsEnum.Default } },
     };
 
     public static PremissionsEnum[] GetPermissions(RoleEnum role)

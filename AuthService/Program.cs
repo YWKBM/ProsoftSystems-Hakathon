@@ -1,35 +1,23 @@
 using AuthLogic;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
-using AuthLogic.Configs;
+using AuthService.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddTransient<HttpContextAccessor>();
 builder.Services.AddLogic();
 builder.Services.AddControllers();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-        }; 
-    });
-
+builder.Services.AddApiAuth();
 
 var app = builder.Build();
+app.Services.ConfigureLogic();
+
+
 app.UseRouting();
 
-app.Services.ConfigureLogic();
-app.UseAuthorization();
 app.UseAuthentication();
-app.MapControllers();
+app.UseAuthorization();
 
+app.MapControllers();
 app.Run();
 

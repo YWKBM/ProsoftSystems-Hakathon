@@ -10,15 +10,15 @@ namespace AuthLogic.Services;
 
 public class TokenService
 {
-    public const string ISSUER_USER = "user";
     private readonly SigningCredentials credentials;
 
     public TokenService()
     {
         byte[] bytes = Encoding.ASCII.GetBytes(Config.JWT.PrivateKey);
+
         credentials = new SigningCredentials(
             new SymmetricSecurityKey(bytes),
-            SecurityAlgorithms.HmacSha256Signature);
+            SecurityAlgorithms.HmacSha256);
     }
 
     public string CreateUserAccessToken(AuthDB.Entities.User user, Guid jti)
@@ -27,11 +27,11 @@ public class TokenService
         var expires = DateTimeOffset.UtcNow.AddMinutes(60);
 
         var header = new JwtHeader(credentials);
-        var payload = new JwtPayload(ISSUER_USER, null, null, null, expires: expires.UtcDateTime)
+        var payload = new JwtPayload(null, null, null, null, expires: expires.UtcDateTime)
         {
-            { "id", user.Id },
-            { "jti", jti },
-            { "roles", permissions },
+            {"id", user.Id },
+            {"jti", jti },
+            {"roles", permissions }
         };
 
         var token = new JwtSecurityToken(header, payload);

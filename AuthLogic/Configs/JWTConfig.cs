@@ -4,10 +4,8 @@ namespace AuthLogic.Configs;
 
 public class JWTConfig : BaseConfig
 {
-    public string PrivateKey { get; set; } = "erqwerqwerqwerqwerqwerqwerasdfbrgbktgbmkmlkmmlkmqqweqwelkmasdlkmasdlkm";
-
-    public byte[] PrivetKeyBytes => Encoding.ASCII.GetBytes(Config.JWT.PrivateKey);
-
+    public string PrivateKey { get; set; } = "secretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKey";
+    
     public JWTConfig() 
     {
         Bind(this);

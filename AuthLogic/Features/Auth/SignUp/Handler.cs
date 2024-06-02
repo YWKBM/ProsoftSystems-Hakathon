@@ -25,13 +25,14 @@ public class Handler
             Role = AuthDB.Entities.Enums.RoleEnum.User,
         };
 
+        db.Set<AuthDB.Entities.User>().Add(user);
+
+        await db.SaveChangesAsync();
+
         var jti = Guid.NewGuid();
 
         var accessToken = tokenService.CreateUserAccessToken(user, jti);
 
-        db.Set<AuthDB.Entities.User>().Add(user);
-
-        await db.SaveChangesAsync();
 
         return new Result
         {
